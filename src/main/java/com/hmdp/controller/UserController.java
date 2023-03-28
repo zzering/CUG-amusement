@@ -3,7 +3,7 @@ package com.hmdp.controller;
 
 import com.hmdp.dto.LoginFormDTO;
 import com.hmdp.dto.Result;
-import com.hmdp.entity.User;
+import com.hmdp.dto.UserDTO;
 import com.hmdp.entity.UserInfo;
 import com.hmdp.service.IUserInfoService;
 import com.hmdp.service.IUserService;
@@ -38,8 +38,7 @@ public class UserController {
      */
     @PostMapping("code")
     public Result sendCode(@RequestParam("phone") String phone, HttpSession session) {
-        // 发送短信验证码并保存验证码
-        return userService.sendCode(phone, session);
+        return userService.sedCode(phone,session);
     }
 
     /**
@@ -48,7 +47,7 @@ public class UserController {
      */
     @PostMapping("/login")
     public Result login(@RequestBody LoginFormDTO loginForm, HttpSession session){
-        //  实现登录功能
+        // 实现登录功能
         return userService.login(loginForm, session);
     }
 
@@ -64,8 +63,8 @@ public class UserController {
 
     @GetMapping("/me")
     public Result me(){
-        // 获取当前登录的用户并返回
-        User user = UserHolder.getUser();
+        // 获取当前登录的用户并返回 不做此操作就不知道登陆状态
+        UserDTO user = UserHolder.getUser();
         return Result.ok(user);
     }
 

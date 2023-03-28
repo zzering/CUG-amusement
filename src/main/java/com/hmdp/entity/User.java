@@ -20,8 +20,8 @@ import java.time.LocalDateTime;
  */
 @Data
 @EqualsAndHashCode(callSuper = false)
-@Accessors(chain = true)//Lombok框架提供的，用于简化Java Bean 对象的构造过程。参数chain = true将生成的set方法返回当前对象，方便链式调用
-@TableName("tb_user")//MyBatis-Plus框架提供的，是用来指定当前实体类对应数据库中的表名。
+@Accessors(chain = true)
+@TableName("tb_user")
 public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
